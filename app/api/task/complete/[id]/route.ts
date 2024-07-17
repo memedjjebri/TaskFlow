@@ -1,8 +1,5 @@
 import Task from "@models/tasks";
 import { connectToDB } from "@utils/database";
-
-import { NextResponse } from "next/server";
-
 import { IDeleteTaskRequestParam } from "@types";
 
 export const PATCH = async (
