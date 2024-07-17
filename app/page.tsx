@@ -148,7 +148,7 @@ export default function Home() {
           <div className="flex justify-center">
             <button
               onClick={handleLogout}
-              className="mt-4 bg-red-500 text-white rounded-md px-3 py-1 text-sm transition duration-200 hover:bg-red-600"
+              className="mb-4 bg-red-500 text-white rounded-md px-8 py-1 text-sm transition duration-200 hover:bg-red-600"
             >
               Logout
             </button>
@@ -161,7 +161,7 @@ export default function Home() {
       )}
       <button
         onClick={() => setIsSignup(!isSignup)}
-        className="mt-4 text-teal-500"
+        className="mb-4 text-teal-500"
       >
         {isSignup
           ? "Already have an account? Login"
