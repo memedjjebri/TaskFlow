@@ -1,43 +1,22 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { CheckIcon } from "@heroicons/react/outline";
 
 const Header = () => {
   return (
-    <Flex
-      p="4rem"
-      direction="column"
-      alignItems="center"
-      bgImage="url('https://cdn.pixabay.com/photo/2018/07/13/09/30/network-3535305_640.jpg')"
-      bgSize="cover"
-      bgPosition="center"
-      borderRadius="md"
-      boxShadow="xl"
-      color="white"
-      backdropFilter="blur(5px)"
+    <div
+      className="p-16 flex flex-col items-center bg-cover bg-center rounded-md shadow-xl text-white backdrop-blur-md"
+      style={{
+        backgroundImage:
+          "url('https://cdn.pixabay.com/photo/2018/07/13/09/30/network-3535305_640.jpg')",
+      }}
     >
-      <Heading
-        as="h1"
-        size="4xl"
-        noOfLines={1}
-        color="orange.300" // Couleur plus prononcée
-        fontFamily="'Poppins', sans-serif"
-        textShadow="2px 2px 4px rgba(0, 0, 0, 0.7)"
-      >
+      <h1 className="text-5xl text-orange-300 font-poppins text-shadow-lg">
         TaskFlow
-      </Heading>
-      <Text
-        mt="5rem"
-        fontSize="lg"
-        color="white"
-        textAlign="center"
-        maxWidth="350px"
-        fontFamily="'Roboto', sans-serif"
-        fontWeight="bold"
-        textShadow="1px 1px 2px rgba(0, 0, 0, 0.5)"
-      >
+      </h1>
+      <p className="mt-20 text-lg text-white text-center max-w-sm font-roboto font-bold text-shadow-sm">
         TaskFlow simplifie la gestion de vos tâches quotidiennes, rendant chaque
         étape plus claire et efficace.
-      </Text>
-    </Flex>
+      </p>
+    </div>
   );
 };
 

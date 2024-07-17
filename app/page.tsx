@@ -1,29 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import {
-  Input,
-  Button,
-  Flex,
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
-  Alert,
-  AlertIcon,
-  Heading,
-  Text,
-  Card,
-  Spinner,
-} from "@chakra-ui/react";
-
 import { ITask } from "@types";
-
 import Task from "@components/Task";
 import NoTask from "@components/NoTask";
 import Loading from "@components/Loading";
 import Header from "@components/Header";
 import AddTask from "@components/AddTask";
+
 
 export default function Home() {
   const [task, setTask] = useState("");
@@ -61,9 +44,15 @@ export default function Home() {
     try {
       const response = await fetch("/api/task/all");
       const data = await response.json();
-      setAllTasks(data);
+      if (Array.isArray(data)) {
+        setAllTasks(data);
+      } else {
+        console.error("Data fetched is not an array", data);
+        setAllTasks([]);
+      }
     } catch (error) {
       console.log("Error fetching tasks:", error);
+      setAllTasks([]);
     } finally {
       setIsLoading(false);
     }
@@ -109,7 +98,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col">
       <Header />
       <AddTask
         task={task}
@@ -119,7 +108,7 @@ export default function Home() {
       {isLoading ? (
         <Loading />
       ) : (
-        <Flex direction="column" p="2rem">
+        <div className="flex flex-col p-8">
           {allTasks.length > 0 ? (
             allTasks.map((individualTask: ITask) => (
               <Task
@@ -132,8 +121,8 @@ export default function Home() {
           ) : (
             <NoTask />
           )}
-        </Flex>
+        </div>
       )}
-    </>
+    </div>
   );
 }

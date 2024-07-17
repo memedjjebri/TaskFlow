@@ -1,43 +1,23 @@
-import { Flex, Input, Button } from "@chakra-ui/react";
-import { SmallAddIcon } from "@chakra-ui/icons";
+import React from "react";
+import { PlusIcon } from "@heroicons/react/outline";
 
-import { AddTaskProps } from "@types";
-
-const AddTask = ({ task, setTask, handleCreateTask }: AddTaskProps) => {
+const AddTask = ({ task, setTask, handleCreateTask }) => {
   return (
-    <Flex pt="2rem" pl="2rem" pr="2rem" pb="1rem" justifyContent="space-between">
-      <Input
+    <div className="flex pt-8 px-8 pb-4 justify-between items-center">
+      <input
+        type="text"
         placeholder="Nouvelle tâche..."
-        size="lg"
+        className="border border-teal-300 bg-white placeholder-gray-500 rounded-md shadow-md transition duration-200 focus:border-teal-500 focus:ring-teal-500 h-12 w-full max-w-2xl px-6"
         onChange={(e) => setTask(e.target.value)}
         value={task}
-        borderColor="teal.300"
-        bg="white"
-        _placeholder={{ color: "gray.500" }}
-        borderRadius="md"
-        boxShadow="md"
-        transition="border 0.2s"
-        _focus={{
-          borderColor: "teal.500",
-          boxShadow: "0 0 0 1px teal.500",
-        }}
       />
-      <Button
-        colorScheme="teal"
-        size="lg"
-        onClick={() => handleCreateTask()}
-        ml="1rem"
-        borderRadius="md"
-        boxShadow="lg"
-        transition="all 0.2s"
-        _hover={{
-          bg: "teal.600",
-          transform: "scale(1.05)",
-        }}
+      <button
+        className="ml-4 bg-teal-500 text-white rounded-md shadow-lg transition duration-200 hover:bg-teal-600 transform hover:scale-105 h-12 w-12 flex items-center justify-center"
+        onClick={handleCreateTask}
       >
-        <SmallAddIcon />
-      </Button>
-    </Flex>
+        <PlusIcon className="h-5 w-5" />
+      </button>
+    </div>
   );
 };
 

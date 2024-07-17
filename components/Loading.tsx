@@ -1,22 +1,8 @@
-import { Flex, Spinner } from "@chakra-ui/react";
-
 const Loading = () => {
   return (
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      width="100%"
-      height="100%"
-    >
-      <Spinner
-        thickness="4px"
-        speed="0.65s"
-        emptyColor="gray.200"
-        color="black.500"
-        size="xl"
-        mt="2rem"
-      />
-    </Flex>
+    <div className="flex justify-center items-center w-full h-full mt-8">
+      <div className="animate-spin h-12 w-12 border-4 border-t-4 border-gray-300 border-t-teal-500 rounded-full"></div>
+    </div>
   );
 };
 

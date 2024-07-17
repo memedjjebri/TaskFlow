@@ -1,7 +1,5 @@
 import React from "react";
-import { Card, Flex, Text, Button } from "@chakra-ui/react";
-import { CheckIcon, DeleteIcon } from "@chakra-ui/icons";
-
+import { CheckIcon, TrashIcon } from "@heroicons/react/outline";
 import { TaskProps } from "@types";
 
 const Task = ({
@@ -10,64 +8,44 @@ const Task = ({
   handleDeleteTask,
 }: TaskProps) => {
   return (
-    <Card
-      p="1.5rem"
-      mb="1rem"
-      borderWidth="1px"
-      borderColor={individualTask.completed ? "blue.300" : "gray.300"}
-      bg={individualTask.completed ? "blue.50" : "white"}
-      borderRadius="md"
-      boxShadow="lg"
-      transition="0.2s"
-      _hover={{ boxShadow: "xl", transform: "translateY(-2px)" }}
+    <div
+      className={`p-6 m-6 border ${
+        individualTask.completed ? "border-blue-300" : "border-gray-300"
+      } bg-${
+        individualTask.completed ? "blue-50" : "white"
+      } rounded-lg shadow-md transition-transform duration-200 hover:shadow-xl hover:-translate-y-1`}
     >
-      <Flex alignItems="center">
-        <Text
-          flexGrow="1"
-          as={individualTask.completed ? "del" : "span"}
-          color={individualTask.completed ? "blue.600" : "black"}
-          fontWeight={individualTask.completed ? "bold" : "medium"}
-          fontSize="lg"
+      <div className="flex items-center">
+        <span
+          className={`flex-grow ${
+            individualTask.completed
+              ? "line-through text-blue-600"
+              : "text-gray-800"
+          } font-semibold text-lg`}
         >
           {individualTask.task}
-        </Text>
-        <Flex>
-          <Button
-            ml="1rem"
-            colorScheme="teal"
+        </span>
+        <div className="flex space-x-4">
+          <button
+            className={`p-2 rounded-full transition duration-200 shadow-md flex items-center justify-center ${
+              individualTask.completed
+                ? "bg-gray-300 cursor-not-allowed"
+                : "bg-teal-500 hover:bg-teal-600 text-white"
+            }`}
             onClick={() => handleCompleteTask(individualTask._id)}
-            isDisabled={individualTask.completed}
-            borderRadius="full"
-            size="sm"
-            boxShadow="md"
-            transition="all 0.3s"
-            _hover={{
-              bg: "teal.500",
-              transform: "scale(1.05)",
-              boxShadow: "lg",
-            }}
+            disabled={individualTask.completed}
           >
-            <CheckIcon />
-          </Button>
-          <Button
-            ml="1rem"
-            colorScheme="red"
+            <CheckIcon className="h-5 w-5" />
+          </button>
+          <button
+            className="p-2 bg-red-500 text-white rounded-full shadow-md transition duration-200 hover:bg-red-600"
             onClick={() => handleDeleteTask(individualTask._id)}
-            borderRadius="full"
-            size="sm"
-            boxShadow="md"
-            transition="all 0.3s"
-            _hover={{
-              bg: "red.500",
-              transform: "scale(1.05)",
-              boxShadow: "lg",
-            }}
           >
-            <DeleteIcon />
-          </Button>
-        </Flex>
-      </Flex>
-    </Card>
+            <TrashIcon className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
