@@ -6,12 +6,15 @@ import NoTask from "@components/NoTask";
 import Loading from "@components/Loading";
 import Header from "@components/Header";
 import AddTask from "@components/AddTask";
-
+import Signup from "@components/Signup";
+import Login from "@components/Login";
 
 export default function Home() {
   const [task, setTask] = useState("");
   const [allTasks, setAllTasks] = useState<ITask[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSignup, setIsSignup] = useState(false);
 
   // Create a new Task
   const handleCreateTask = async () => {
@@ -92,37 +95,78 @@ export default function Home() {
     }
   };
 
+  const handleSignup = async (userData) => {
+    // Implement signup logic here...
+    setIsLoggedIn(true);
+  };
+
+  const handleLogin = async (userData) => {
+    // Implement login logic here...
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setAllTasks([]); // Clear tasks on logout
+  };
+
   // Fetch all the tasks when the component is loaded
   useEffect(() => {
-    fetchTasks();
-  }, []);
+    if (isLoggedIn) {
+      fetchTasks();
+    }
+  }, [isLoggedIn]);
 
   return (
     <div className="flex flex-col">
       <Header />
-      <AddTask
-        task={task}
-        setTask={setTask}
-        handleCreateTask={handleCreateTask}
-      />
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div className="flex flex-col p-8">
-          {allTasks.length > 0 ? (
-            allTasks.map((individualTask: ITask) => (
-              <Task
-                key={individualTask._id}
-                individualTask={individualTask}
-                handleCompleteTask={handleCompleteTask}
-                handleDeleteTask={handleDeleteTask}
-              />
-            ))
+      {isLoggedIn ? (
+        <>
+          <AddTask
+            task={task}
+            setTask={setTask}
+            handleCreateTask={handleCreateTask}
+          />
+          {isLoading ? (
+            <Loading />
           ) : (
-            <NoTask />
+            <div className="flex flex-col p-8">
+              {allTasks.length > 0 ? (
+                allTasks.map((individualTask: ITask) => (
+                  <Task
+                    key={individualTask._id}
+                    individualTask={individualTask}
+                    handleCompleteTask={handleCompleteTask}
+                    handleDeleteTask={handleDeleteTask}
+                  />
+                ))
+              ) : (
+                <NoTask />
+              )}
+            </div>
           )}
-        </div>
+          <div className="flex justify-center">
+            <button
+              onClick={handleLogout}
+              className="mt-4 bg-red-500 text-white rounded-md px-3 py-1 text-sm transition duration-200 hover:bg-red-600"
+            >
+              Logout
+            </button>
+          </div>
+        </>
+      ) : isSignup ? (
+        <Signup handleSignup={handleSignup} />
+      ) : (
+        <Login handleLogin={handleLogin} />
       )}
+      <button
+        onClick={() => setIsSignup(!isSignup)}
+        className="mt-4 text-teal-500"
+      >
+        {isSignup
+          ? "Already have an account? Login"
+          : "Don't have an account? Sign Up"}
+      </button>
     </div>
   );
 }

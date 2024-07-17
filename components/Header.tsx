@@ -1,5 +1,3 @@
-import { CheckIcon } from "@heroicons/react/outline";
-
 const Header = () => {
   return (
     <div
@@ -9,7 +7,7 @@ const Header = () => {
           "url('https://cdn.pixabay.com/photo/2018/07/13/09/30/network-3535305_640.jpg')",
       }}
     >
-      <h1 className="text-5xl text-orange-300 font-poppins text-shadow-lg">
+      <h1 className="text-7xl font-bold text-orange-300 font-poppins text-shadow-lg">
         TaskFlow
       </h1>
       <p className="mt-20 text-lg text-white text-center max-w-sm font-roboto font-bold text-shadow-sm">
