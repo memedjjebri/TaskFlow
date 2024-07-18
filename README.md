@@ -1,9 +1,11 @@
 TaskFlow: 
 
 Contexte du projet
+
 * TaskFlow est une application web conçue pour faciliter la gestion des tâches quotidiennes. Elle permet aux utilisateurs de créer, modifier, compléter et supprimer des tâches, offrant ainsi une solution simple et efficace pour rester organisé.
 
 Fonctionnalités
+
  * Inscription et connexion des utilisateurs
  * Création, modification, et suppression des tâches
  * Marquer les tâches comme complétées
@@ -12,6 +14,7 @@ Fonctionnalités
 
 
 Technologies employées
+
  * Frontend
  - React
  - Next.js
@@ -24,7 +27,9 @@ Technologies employées
 
 
 Modélisation de la base de données
+
 Task Schema
+
 Champ	Type	Description
 _id	ObjectId	Identifiant unique de la tâche
 task	String	Description de la tâche
@@ -72,5 +77,3 @@ backend/
 Auteurs
 JEBRI Mohamed
 
-License
-Ce projet est sous licence MIT 
