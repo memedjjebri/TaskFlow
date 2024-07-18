@@ -6,7 +6,7 @@ import NoTask from "@components/NoTask";
 import Loading from "@components/Loading";
 import Header from "@components/Header";
 import AddTask from "@components/AddTask";
-import Signup from "@components/Signup";
+import Signup from "@components/SignUp";
 import Login from "@components/Login";
 
 export default function Home() {
@@ -95,19 +95,19 @@ export default function Home() {
     }
   };
 
-  const handleSignup = async (userData) => {
-    // Implement signup logic here...
+  const handleSignup = async () => {
+   
     setIsLoggedIn(true);
   };
 
-  const handleLogin = async (userData) => {
-    // Implement login logic here...
+  const handleLogin = async () => {
+  
     setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setAllTasks([]); // Clear tasks on logout
+    setAllTasks([]); //
   };
 
   // Fetch all the tasks when the component is loaded

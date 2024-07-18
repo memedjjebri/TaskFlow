@@ -19,7 +19,8 @@ Technologies employées
  - React
  - Next.js
  - Tailwind CSS
- - Backend
+ 
+ * Backend
  - Node.js
  - Express
  - MongoDB

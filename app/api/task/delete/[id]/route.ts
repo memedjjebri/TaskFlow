@@ -10,7 +10,7 @@ export const DELETE = async (
   try {
     await connectToDB();
 
-    // Find the task by ID and remove it
+   
     const task = await Task.findByIdAndDelete(params.id);
 
     if (!task) {
