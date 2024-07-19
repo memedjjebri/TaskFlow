@@ -8,6 +8,7 @@ import Header from "@components/Header";
 import AddTask from "@components/AddTask";
 import Signup from "@components/SignUp";
 import Login from "@components/Login";
+import Footer from "@components/Footer";
 
 export default function Home() {
   const [task, setTask] = useState("");
@@ -165,6 +166,7 @@ export default function Home() {
           ? "Already have an account? Login"
           : "Don't have an account? Sign Up"}
       </button>
+       <Footer /> 
     </div>
   );
 }
