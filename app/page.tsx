@@ -96,12 +96,10 @@ export default function Home() {
   };
 
   const handleSignup = async () => {
-   
     setIsLoggedIn(true);
   };
 
   const handleLogin = async () => {
-  
     setIsLoggedIn(true);
   };
 
@@ -148,7 +146,7 @@ export default function Home() {
           <div className="flex justify-center">
             <button
               onClick={handleLogout}
-              className="mb-4 bg-red-500 text-white rounded-md px-8 py-1 text-sm transition duration-200 hover:bg-red-600"
+              className="mb-4 bg-red-500 text-white rounded-md px-8 py-2 text-sm transition duration-200 hover:bg-red-600"
             >
               Logout
             </button>
