@@ -30,7 +30,7 @@ const Task = ({
             className={`p-2 rounded-full transition duration-200 shadow-md flex items-center justify-center ${
               individualTask.completed
                 ? "bg-gray-300 cursor-not-allowed"
-                : "bg-teal-500 hover:bg-teal-600 text-white"
+                : "bg-blue-500 hover:bg-teal-600 text-white"
             }`}
             onClick={() => handleCompleteTask(individualTask._id)}
             disabled={individualTask.completed}
